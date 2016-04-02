@@ -52,6 +52,7 @@ function checkInput_(sack, next){
 function frameData_(sack, next){
   var method = self.name + ' | '+ frameData_.name;
   logs.debug('In', method);
+  logs.debug(sack.body);
   sack.data = {
     userId: sack.userCaller.facebookId,
     equipment: {
@@ -59,10 +60,10 @@ function frameData_(sack, next){
       extras: sack.body.extras
     },
     genre: {
-      wedding: sack.body.genre.wedding,
-      gradutaion: sack.body.genre.gradutaion,
-      family:sack.body.genre.family,
-      sports: sack.body.genre.sports
+      wedding: sack.body.genre['wedding'],
+      gradutaion: sack.body.genre['gradutaion'],
+      family:sack.body.genre['family'],
+      sports: sack.body.genre['sports']
     },
     zipCodes: sack.body.zipCodes
   };
