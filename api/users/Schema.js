@@ -11,7 +11,7 @@ var accountSchema = mongoose.Schema({
   displayName: String,
   email: String,
   image: String,
-  tokens: [String],
+  tokens: String,
   photographerId: {type: String, default: null},
   isAdmin: { type: Boolean, default: false}
 });

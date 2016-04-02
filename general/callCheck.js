@@ -55,25 +55,19 @@ function breakAccessToken_(sack, next){
     logs.debug('Call Contains Valid API Token');
 
   sack.accessToken = accessToken[1];
-
   next();
 }
 
 function formOutput_(sack, next){
   var method = self.name + ' | '+ formOutput_.name;
   logs.info('In', method);
-
+  logs.debug(sack.accessToken);
   UserModel.findOne({tokens: sack.accessToken},
     function (err, user) {
       if (err)
         return next(new CallErr(who, CallErr.DBEntityNotFound,
           'Database error finding token', err));
-
-      if (!user) {
-        //maybe its a machine token
-        return next();
-      }
-
+  logs.debug(user);
       sack.req.userModel = user;
       next();
     }
