@@ -23,7 +23,7 @@ function get(req, res) {
         return throwErr(res, err);
       }
       logs.info('Finished', self.name)
-      sack.resBody.push(sack.userCaller);
+      sack.resBody.push(sack.userCaller.facebookId);
       return res.json(200, sack.resBody);
     }
   );
